@@ -1,0 +1,45 @@
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .homepage-container {
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0 auto; /* Center container horizontally */
+  }
+  
+  .header-container {
+    margin-bottom: 2rem;
+  }
+  
+  .header-container h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .date-display {
+    font-size: 1.2rem;
+    color: #187705; /* Darker color for contrast */
+    font-weight: bold; /* Make text bold */
+  }
+  
+  .tide-card {
+    background: linear-gradient(135deg, #003366, #006699); /* Navy blue gradient */
+    color: #fff; /* White text color */
+  }
+  
+  .tide-card .card-body {
+    padding: 20px;
+  }
+  
+  .tide-card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff; /* Ensure title text is white */
+  }
+  
+  .tide-card .card-text {
+    font-size: 1.2rem;
+    color: #fff; /* Ensure card text is white */
+  }
+  
