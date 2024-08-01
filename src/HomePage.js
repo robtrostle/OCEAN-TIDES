@@ -31,7 +31,7 @@ const HomePage = () => {
       const today = getFormattedDate();
       try {
         const response = await fetch(
-          `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=${today}&end_date=${today}&station=8720259&product=predictions&datum=MLLW&time_zone=lst_ldt&interval=hilo&units=english&application=DataAPI_Sample&format=json`
+          `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=${today}&station=8720259&product=predictions&datum=MLLW&time_zone=lst_ldt&interval=hilo&units=english&application=DataAPI_Sample&format=json`
         );
         if (!response.ok) {
           throw new Error('Network response was not ok');
