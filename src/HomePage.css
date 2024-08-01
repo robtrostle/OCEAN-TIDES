@@ -4,23 +4,54 @@ html, body {
   }
   
   .homepage-container {
+    background: linear-gradient(135deg, #8a8989, #3a3a3a); /* Medium grey gradient */
     min-height: 100vh;
     padding: 20px;
-    margin: 0 auto; /* Center container horizontally */
   }
+
+  .modern-title {
+    font-family: 'Montserrat', sans-serif; /* Use a modern, clean font */
+    font-size: 2.5rem; /* Larger font size */
+    color: #003366; /* Navy blue color */
+    font-weight: 600; /* Semi-bold weight for emphasis */
+    text-transform: uppercase; /* Uppercase letters */
+    letter-spacing: 0.05em; /* Slightly increased letter spacing */
+    position: relative; /* Relative positioning for the underline effect */
+    display: inline-block; /* To fit the underline width */
+  }
+
+  .modern-title::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 4px;
+    background: #006699;
+    margin: 0 auto;
+    margin-top: 8px;
+    border-radius: 2px;
+  }
+  
   
   .header-container {
     margin-bottom: 2rem;
   }
   
   .header-container h1 {
+    color: white;
     margin-bottom: 0.5rem;
   }
   
   .date-display {
-    font-size: 1.2rem;
-    color: #187705; /* Darker color for contrast */
-    font-weight: bold; /* Make text bold */
+    font-family: 'Montserrat', sans-serif; /* Use the same modern font as the title */
+    font-size: 1.5rem; /* Slightly larger font size for emphasis */
+    color: #FFFFFF; /* White color for contrast against the gradient background */
+    font-weight: 500; /* Medium weight for a sleek look */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 5px 10px; /* Add padding for a 'badge' effect */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    display: inline-block; /* Center the date display */
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
   }
   
   .tide-card {
