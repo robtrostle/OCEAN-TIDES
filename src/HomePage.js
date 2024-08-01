@@ -47,11 +47,11 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Container className="homepage-container mt-5">
+    <Container className="homepage-container mt-0">
       <Row className="justify-content-center">
         <Col xs={12} md={8}>
         <div className="header-container mb-4 text-center">
-            <h1 className="mb-2">Tide Predictions for Atlantic Beach</h1>
+        <h1 className="mb-2 modern-title">Tide Predictions for Atlantic Beach</h1>
             <p className="date-display">{getToday()}</p>
           </div>
           {error ? (
