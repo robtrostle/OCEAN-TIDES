@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Alert, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import './HomePage.css'; // Import the custom CSS file
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Card, Alert, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "./HomePage.css"; // Import the custom CSS file
 
 const HomePage = () => {
   const [tides, setTides] = useState([]);
   const [error, setError] = useState(null);
+  const [waterTemp, setWaterTemp] = useState(null);
   const navigate = useNavigate(); // Hook for navigation
+  const [windData, setWindData] = useState({ speed: null, direction: null });
 
   // Get today's date in the format YYYYMMDD
   const getFormattedDate = () => {
     const date = new Date();
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
     return `${year}${month}${day}`;
   };
 
@@ -26,8 +28,6 @@ const HomePage = () => {
     return `${month}/${day}/${year}`;
   };
 
-  
-
   useEffect(() => {
     const fetchTides = async () => {
       const today = getFormattedDate();
@@ -36,7 +36,7 @@ const HomePage = () => {
           `https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=${today}&end_date=${today}&station=8720259&product=predictions&datum=MLLW&time_zone=lst_ldt&interval=hilo&units=english&format=json`
         );
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setTides(data.predictions);
@@ -45,19 +45,56 @@ const HomePage = () => {
       }
     };
 
+    const fetchWaterTemp = async () => {
+      try {
+        const response = await fetch(
+          "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&station=8720218&product=water_temperature&units=english&time_zone=lst_ldt&format=json"
+        );
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        const temp = parseFloat(data.data[0].v);
+        setWaterTemp(temp);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    const fetchWindData = async () => {
+      try {
+        const response = await fetch(
+          'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&station=8720218&product=wind&time_zone=lst_ldt&units=english&application=DataAPI_Sample&format=json'
+        );
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const windSpeed = parseFloat(data.data[0].s);
+        const windDirection = data.data[0].dr; // Use the "dr" element for direction
+        setWindData({ speed: windSpeed, direction: windDirection });
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
     fetchTides();
+    fetchWaterTemp();
+    fetchWindData();
   }, []);
 
   const navigateToTomorrow = () => {
-    navigate('/see-tomorrow');
+    navigate("/see-tomorrow");
   };
 
   return (
     <Container className="homepage-container mt-0">
       <Row className="justify-content-center">
         <Col xs={12} md={8}>
-        <div className="header-container mb-4 text-center">
-        <h1 className="mb-2 modern-title">Tide Predictions for Atlantic Beach</h1>
+          <div className="header-container mb-4 text-center">
+            <h1 className="mb-2 modern-title">
+              Tide Predictions for Atlantic Beach
+            </h1>
             <p className="date-display">{getToday()}</p>
           </div>
           {error ? (
@@ -68,18 +105,48 @@ const HomePage = () => {
             tides.map((tide, index) => (
               <Card key={index} className="mb-3 tide-card">
                 <Card.Body>
-                  <Card.Title>{tide.type === 'H' ? 'High Tide' : 'Low Tide'}</Card.Title>
+                  <Card.Title>
+                    {tide.type === "H" ? "High Tide" : "Low Tide"}
+                  </Card.Title>
                   <Card.Text>Height: {tide.v} feet</Card.Text>
-                  <Card.Text>{new Date(tide.t).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}</Card.Text>
+                  <Card.Text>
+                    {new Date(tide.t).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    })}
+                  </Card.Text>
                 </Card.Body>
               </Card>
             ))
           ) : (
             <p className="text-center">No tide data available.</p>
           )}
-           <div className="text-center mt-4">
+          {waterTemp !== null && (
+            <Card
+              className={`mt-4 water-temp-card ${waterTemp > 80 ? "" : "blue"}`}
+            >
+              <Card.Body className="text-center">
+                <Card.Title>Current Water Temperature</Card.Title>
+                <Card.Text>{waterTemp.toFixed(1)}°F</Card.Text>
+              </Card.Body>
+            </Card>
+          )}
+          {windData.speed !== null && windData.direction !== null && (
+            <Card className="mt-4 wind-card">
+              <Card.Body className="text-center">
+                <Card.Title>Current Wind Speed and Direction</Card.Title>
+                <Card.Text>
+                  {windData.speed.toFixed(1)} mph, {windData.direction}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          )}
+          <div className="text-center mt-4">
             <Col xs="auto">
-              <Button className="see-tomorrow-btn" onClick={navigateToTomorrow}>See Tomorrow's Tides</Button>
+              <Button className="see-tomorrow-btn" onClick={navigateToTomorrow}>
+                See Tomorrow's Tides
+              </Button>
             </Col>
           </div>
         </Col>
