@@ -1,18 +1,15 @@
-html, body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .homepage-container {
-    background: linear-gradient(135deg, #8a8989, #3a3a3a); /* Medium grey gradient */
-    min-height: 100vh;
-    padding: 20px;
-  }
 
+.homepage-container {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+  
   .modern-title {
     font-family: 'Montserrat', sans-serif; /* Use a modern, clean font */
     font-size: 2.5rem; /* Larger font size */
-    color: #003366; /* Navy blue color */
+    color: #f8f9fa; /* Navy blue color */
     font-weight: 600; /* Semi-bold weight for emphasis */
     text-transform: uppercase; /* Uppercase letters */
     letter-spacing: 0.05em; /* Slightly increased letter spacing */
@@ -30,6 +27,17 @@ html, body {
     margin-top: 8px;
     border-radius: 2px;
   }
+
+
+
+  
+  .iframe-container iframe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+  }
   
   
   .header-container {
@@ -37,7 +45,7 @@ html, body {
   }
   
   .header-container h1 {
-    color: white;
+    color: rgb(54, 50, 50);
     margin-bottom: 0.5rem;
   }
   
@@ -56,6 +64,7 @@ html, body {
   
   .tide-card {
     background: linear-gradient(135deg, #003366, #006699); /* Navy blue gradient */
+    opacity: 0.9;
     color: #fff; /* White text color */
   }
   
@@ -94,6 +103,7 @@ html, body {
   .water-temp-card {
     background: linear-gradient(135deg, #800000, #b22222);
     color: white !important; /* Ensure text color is white */
+    opacity: 0.9;
     border: none;
   }
   
@@ -122,6 +132,7 @@ html, body {
 
 .wind-card {
   background: linear-gradient(135deg, #aa72df, #46026d); /* Gradient from dark purple to a more vibrant purple */
+  opacity: 0.9;
   color: white !important;
   border: none;
 }
