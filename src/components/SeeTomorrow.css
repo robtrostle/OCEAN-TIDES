@@ -1,44 +1,18 @@
-html, body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .homepage-container {
+.seetomorrow-container {
     background: linear-gradient(135deg, #8a8989, #3a3a3a); /* Medium grey gradient */
     min-height: 100vh;
     padding: 20px;
+    color: #fff; /* Ensure text is readable on dark background */
   }
-
-  .modern-title {
-    font-family: 'Montserrat', sans-serif; /* Use a modern, clean font */
-    font-size: 2.5rem; /* Larger font size */
-    color: #003366; /* Navy blue color */
-    font-weight: 600; /* Semi-bold weight for emphasis */
-    text-transform: uppercase; /* Uppercase letters */
-    letter-spacing: 0.05em; /* Slightly increased letter spacing */
-    position: relative; /* Relative positioning for the underline effect */
-    display: inline-block; /* To fit the underline width */
-  }
-
-  .modern-title::after {
-    content: '';
-    display: block;
-    width: 60%;
-    height: 4px;
-    background: #006699;
-    margin: 0 auto;
-    margin-top: 8px;
-    border-radius: 2px;
-  }
-  
   
   .header-container {
     margin-bottom: 2rem;
   }
   
-  .header-container h1 {
-    color: white;
+  .modern-title {
     margin-bottom: 0.5rem;
+    font-family: 'Arial', sans-serif; /* Change to a modern font */
+    font-weight: bold;
   }
   
   .date-display {
@@ -55,7 +29,7 @@ html, body {
   }
   
   .tide-card {
-    background: linear-gradient(135deg, #003366, #006699); /* Navy blue gradient */
+    background: rgba(0, 51, 102, 0.8); /* Navy blue with transparency */
     color: #fff; /* White text color */
   }
   
@@ -63,18 +37,16 @@ html, body {
     padding: 20px;
   }
   
-  .tide-card .card-title {
+  .card-title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #fff; /* Ensure title text is white */
   }
   
-  .tide-card .card-text {
+  .card-text {
     font-size: 1.2rem;
-    color: #fff; /* Ensure card text is white */
   }
-
-  .homepage-container .text-center .see-tomorrow-btn {
+  
+  .seetomorrow-container .text-center .back-button {
     font-size: 1.2rem;
     color: #ffffff; /* White text color for better contrast */
     font-weight: bold;
@@ -86,26 +58,8 @@ html, body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
   }
   
-  .homepage-container .text-center .see-tomorrow-btn:hover {
+  .seetomorrow-container .text-center .back-button:hover {
     background: linear-gradient(135deg, #92c9f3,  rgba(1, 11, 22, 0.8)); /* Darker gradient on hover */
     transform: translateY(-2px); /* Slight lift effect on hover */
   }
-
-  .water-temp-card {
-    background: linear-gradient(135deg, #800000, #b22222);
-    color: white !important; /* Ensure text color is white */
-    border: none;
-  }
-  
-  .water-temp-card.blue {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: white !important; /* Ensure text color is white */
-  }
-  
-  .water-temp-card .card-title, 
-  .water-temp-card .card-text {
-    color: white !important; /* Override any inherited styles */
-    font-size: 1.25rem;
-  }
-
   

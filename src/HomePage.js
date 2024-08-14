@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Card, Alert, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css'; // Import the custom CSS file
 
 const HomePage = () => {
   const [tides, setTides] = useState([]);
   const [error, setError] = useState(null);
   const [waterTemp, setWaterTemp] = useState(null);
+  const navigate = useNavigate(); // Hook for navigation
 
   // Get today's date in the format YYYYMMDD
   const getFormattedDate = () => {
@@ -64,6 +66,10 @@ const HomePage = () => {
     fetchWaterTemp();
   }, []);
 
+  const navigateToTomorrow = () => {
+    navigate('/see-tomorrow');
+  };
+
   return (
     <Container className="homepage-container mt-0">
       <Row className="justify-content-center">
@@ -97,6 +103,11 @@ const HomePage = () => {
     </Card.Body>
   </Card>
 )}
+           <div className="text-center mt-4">
+            <Col xs="auto">
+              <Button className="see-tomorrow-btn" onClick={navigateToTomorrow}>See Tomorrow's Tides</Button>
+            </Col>
+          </div>
         </Col>
       </Row>
     </Container>
