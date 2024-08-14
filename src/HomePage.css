@@ -9,7 +9,7 @@
   .modern-title {
     font-family: 'Montserrat', sans-serif; /* Use a modern, clean font */
     font-size: 2.5rem; /* Larger font size */
-    color: #003366; /* Navy blue color */
+    color: #f8f9fa; /* Navy blue color */
     font-weight: 600; /* Semi-bold weight for emphasis */
     text-transform: uppercase; /* Uppercase letters */
     letter-spacing: 0.05em; /* Slightly increased letter spacing */
@@ -29,12 +29,15 @@
   }
 
 
-/* Style the iframe to cover the entire container */
-.iframe-container iframe {
-  width: 100vw;
-  height: 100vh;
-  border: none; /* Remove iframe border */
-}
+
+  
+  .iframe-container iframe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+  }
   
   
   .header-container {
