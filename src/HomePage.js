@@ -88,9 +88,11 @@ const HomePage = () => {
   };
 
   return (
-    <Container className="homepage-container mt-0">
-      <Row className="justify-content-center">
-        <Col xs={12} md={8}>
+    
+    <Container className="homepage-container mt-0 p-5">
+    <Row className="justify-content-center mt-0 p-5">
+      <Col xs={12} md={8} sm={10}>
+
           <div className="header-container mb-4 text-center">
             <h1 className="mb-2 modern-title">
               Tide Predictions for Atlantic Beach
@@ -144,11 +146,12 @@ const HomePage = () => {
           )}
           <div className="text-center mt-4">
             <Col xs="auto">
-              <Button className="see-tomorrow-btn" onClick={navigateToTomorrow}>
+              <Button className="see-tomorrow-btn mb-5" onClick={navigateToTomorrow}>
                 See Tomorrow's Tides
               </Button>
             </Col>
           </div>
+          
         </Col>
       </Row>
     </Container>
