@@ -108,4 +108,30 @@ html, body {
     font-size: 1.25rem;
   }
 
+  /* HomePage.css */
+.water-temp-card {
+  background: linear-gradient(135deg, #f04b4b, #7a0404);
+  color: white !important; /* Ensure text color is white */
+  border: none;
+}
+
+.water-temp-card.blue {
+  background: linear-gradient(135deg, #49a05c, #254b27); /* Gradient from deep blue to a lighter blue */
+  color: white !important;
+}
+
+.wind-card {
+  background: linear-gradient(135deg, #aa72df, #46026d); /* Gradient from dark purple to a more vibrant purple */
+  color: white !important;
+  border: none;
+}
+
+.water-temp-card .card-title, 
+.water-temp-card .card-text,
+.wind-card .card-title, 
+.wind-card .card-text {
+  font-size: 1.25rem;
+}
+
+
   
