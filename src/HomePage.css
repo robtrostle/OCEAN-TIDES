@@ -73,4 +73,23 @@ html, body {
     font-size: 1.2rem;
     color: #fff; /* Ensure card text is white */
   }
+
+
+.water-temp-card {
+  background: linear-gradient(135deg, #800000, #b22222);
+  color: white !important; /* Ensure text color is white */
+  border: none;
+}
+
+.water-temp-card.blue {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white !important; /* Ensure text color is white */
+}
+
+.water-temp-card .card-title, 
+.water-temp-card .card-text {
+  color: white !important; /* Override any inherited styles */
+  font-size: 1.25rem;
+}
+
   

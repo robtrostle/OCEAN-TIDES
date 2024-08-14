@@ -5,6 +5,7 @@ import './HomePage.css'; // Import the custom CSS file
 const HomePage = () => {
   const [tides, setTides] = useState([]);
   const [error, setError] = useState(null);
+  const [waterTemp, setWaterTemp] = useState(null);
 
   // Get today's date in the format YYYYMMDD
   const getFormattedDate = () => {
@@ -43,7 +44,24 @@ const HomePage = () => {
       }
     };
 
+    const fetchWaterTemp = async () => {
+      try {
+        const response = await fetch(
+          'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&station=8720218&product=water_temperature&units=english&time_zone=lst_ldt&format=json'
+        );
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        const temp = parseFloat(data.data[0].v);
+        setWaterTemp(temp);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
     fetchTides();
+    fetchWaterTemp();
   }, []);
 
   return (
@@ -71,6 +89,14 @@ const HomePage = () => {
           ) : (
             <p className="text-center">No tide data available.</p>
           )}
+{waterTemp !== null && (
+  <Card className={`mt-4 water-temp-card ${waterTemp > 80 ? '' : 'blue'}`}>
+    <Card.Body className="text-center">
+      <Card.Title>Current Water Temperature</Card.Title>
+      <Card.Text>{waterTemp.toFixed(1)}°F</Card.Text>
+    </Card.Body>
+  </Card>
+)}
         </Col>
       </Row>
     </Container>
