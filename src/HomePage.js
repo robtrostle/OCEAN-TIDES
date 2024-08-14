@@ -88,9 +88,31 @@ const HomePage = () => {
   };
 
   return (
-    <Container className="homepage-container mt-0">
-      <Row className="justify-content-center">
-        <Col xs={12} md={8}>
+    <Container className="homepage-container mt-0 p-5">
+    <Row className="justify-content-center">
+      <Col xs={12} md={8}>
+    <div class="iframe-container mt-0"
+    >
+      <iframe
+        title="background image"
+        src="https://giphy.com/embed/FZAr9wQAa22Y7XbfZp"
+        style={{
+          top: 0,
+          left: 0,
+          zIndex: -1,
+          border: 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          position: 'fixed',
+          top: 0,
+        }}
+        className="giphy-embed"
+        allowFullScreen
+      >
+
+        
+      </iframe>
           <div className="header-container mb-4 text-center">
             <h1 className="mb-2 modern-title">
               Tide Predictions for Atlantic Beach
@@ -144,10 +166,11 @@ const HomePage = () => {
           )}
           <div className="text-center mt-4">
             <Col xs="auto">
-              <Button className="see-tomorrow-btn" onClick={navigateToTomorrow}>
+              <Button className="see-tomorrow-btn mb-5" onClick={navigateToTomorrow}>
                 See Tomorrow's Tides
               </Button>
             </Col>
+          </div>
           </div>
         </Col>
       </Row>
