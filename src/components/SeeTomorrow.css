@@ -1,8 +1,8 @@
 .seetomorrow-container {
-    background: linear-gradient(135deg, #8a8989, #3a3a3a); /* Medium grey gradient */
-    min-height: 100vh;
-    padding: 20px;
-    color: #fff; /* Ensure text is readable on dark background */
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   }
   
   .header-container {
@@ -29,7 +29,8 @@
   }
   
   .tide-card {
-    background: rgba(0, 51, 102, 0.8); /* Navy blue with transparency */
+    background: linear-gradient(135deg, #003366, #006699); /* Navy blue gradient */
+    opacity: 0.9;
     color: #fff; /* White text color */
   }
   
