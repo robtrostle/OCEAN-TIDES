@@ -53,7 +53,7 @@ const SeeTomorrow = () => {
       <Row className="justify-content-center">
         <Col xs={12} md={8}>
           <div className="header-container mb-4 text-center">
-            <h1 className="mb-2 modern-title">TOMORROW'S TIDES</h1>
+            <h1 className="mb-2 modern-title">--------------------</h1>
             </div>
             <div className="mb=4 text-center">
             <p className="date-display">{getTomorrow()}</p>
