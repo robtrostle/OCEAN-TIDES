@@ -91,8 +91,7 @@ const HomePage = () => {
     
     <Container className="homepage-container mt-0 p-5">
     <Row className="justify-content-center mt-0 p-5">
-      <Col xs={12} md={8} sm={10}>
-
+      <Col xs={12} md={8} >
           <div className="header-container mb-4 text-center">
             <h1 className="mb-2 modern-title">
               Tide Predictions for Atlantic Beach
