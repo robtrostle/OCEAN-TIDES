@@ -1,11 +1,54 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Alert, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { ArrowUp, ArrowDown } from 'lucide-react';
 import "./HomePage.css"; // Import the custom CSS file
+
+// Add this style block at the top of your file or in a separate CSS file
+const styles = `
+  .navy-gradient {
+    background: linear-gradient(135deg, #003366, #006699);
+    opacity: 0.9;
+  }
+  .orange-border {
+    border: 4px solid #ffa500;
+  }
+    .date-display {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+const TideCard = ({ type, height, time, isNextTide }) => (
+  <div className={`mb-3 p-4 navy-gradient rounded-lg shadow-md text-white ${isNextTide ? 'orange-border' : ''}`}>
+    <div className="flex justify-between items-center">
+      <div>
+        <h3 className="text-lg font-bold mb-2">{type === "H" ? "High Tide" : "Low Tide"}</h3>
+        <p className="text-md">Height: {height} feet</p>
+        <p className="text-md">{new Date(time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true })}</p>
+      </div>
+      <div className="flex items-center">
+        {type === "H" ? 
+          <ArrowUp className="text-red-500" size={38} /> : 
+          <ArrowDown className="text-green-500" size={38} />
+        }
+      </div>
+    </div>
+  </div>
+);
 
 const HomePage = () => {
   const [tides, setTides] = useState([]);
   const [error, setError] = useState(null);
+  const [nextTideIndex, setNextTideIndex] = useState(null);
   const [waterTemp, setWaterTemp] = useState(null);
   const navigate = useNavigate(); // Hook for navigation
   const [windData, setWindData] = useState({ speed: null, direction: null });
@@ -40,10 +83,17 @@ const HomePage = () => {
         }
         const data = await response.json();
         setTides(data.predictions);
+
+        // Determine the index of the next tide
+        const currentTime = new Date();
+        const nextTideIndex = data.predictions.findIndex((tide) => {
+          return new Date(tide.t) > currentTime;
+        });
+        setNextTideIndex(nextTideIndex);
       } catch (error) {
         setError(error.message);
       }
-    };
+    }
 
     const fetchWaterTemp = async () => {
       try {
@@ -88,40 +138,36 @@ const HomePage = () => {
   };
 
   return (
-    
-    <Container className="homepage-container mt-0 p-5">
-    <Row className="justify-content-center mt-0 p-5">
-      <Col xs={12} md={8} >
+    <>
+      <style>{styles}</style>
+      <Container className="homepage-container mt-10 max-w-full">
+      <Row className="justify-content-center">
+      <Col xs={12} md={8}>
+        
+      <div className="container mx-auto p-3">
+        <div className="max-w-2xl mx-auto">
           <div className="header-container mb-4 text-center">
-            <h1 className="mb-2 modern-title">
-              Tide Predictions for Atlantic Beach
-            </h1>
+            <h1 className="modern-title max-w-full text-3xl font-bold mb-2">Atlantic Beach, FL</h1>
             <p className="date-display">{getToday()}</p>
           </div>
+
+          
           {error ? (
-            <Alert variant="danger" className="text-center">
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center mt-4" role="alert">
               Error fetching data: {error}
-            </Alert>
+            </div>
           ) : tides.length > 0 ? (
             tides.map((tide, index) => (
-              <Card key={index} className="mb-3 tide-card">
-                <Card.Body>
-                  <Card.Title>
-                    {tide.type === "H" ? "High Tide" : "Low Tide"}
-                  </Card.Title>
-                  <Card.Text>Height: {tide.v} feet</Card.Text>
-                  <Card.Text>
-                    {new Date(tide.t).toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    })}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <TideCard
+                key={index}
+                type={tide.type}
+                height={tide.v}
+                time={tide.t}
+                isNextTide={index === nextTideIndex}
+              />
             ))
           ) : (
-            <p className="text-center">No tide data available.</p>
+            <p className="text-center mt-4">No tide data available.</p>
           )}
           {waterTemp !== null && (
             <Card
@@ -136,7 +182,7 @@ const HomePage = () => {
           {windData.speed !== null && windData.direction !== null && (
             <Card className="mt-4 wind-card">
               <Card.Body className="text-center">
-                <Card.Title>Current Wind Speed and Direction</Card.Title>
+                <Card.Title>Current Wind Speed & Direction</Card.Title>
                 <Card.Text>
                   {windData.speed.toFixed(1)} mph, {windData.direction}
                 </Card.Text>
@@ -150,10 +196,12 @@ const HomePage = () => {
               </Button>
             </Col>
           </div>
-          
-        </Col>
-      </Row>
-    </Container>
+          </div>
+          </div>
+          </Col>
+          </Row>
+          </Container>
+          </>
   );
 };
 
