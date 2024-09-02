@@ -32,8 +32,8 @@ const TideCard = ({ type, height, time, isCurrentTide }) => (
     <div className="flex justify-between items-center">
       <div>
         <h3 className="text-lg font-bold mb-2">{type === "H" ? "High Tide" : "Low Tide"}</h3>
-        <p className="text-lg">Height: {height} feet</p>
-        <p className="text-lg">{new Date(time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true })}</p>
+        <p className="text-md">Height: {height} feet</p>
+        <p className="text-md">{new Date(time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true })}</p>
       </div>
       <div className="flex items-center">
         {type === "H" ? 
@@ -95,7 +95,7 @@ const SeeTomorrow = () => {
     <>
       <style>{styles}</style>
 
-      <Container className="seetomorrow-container mt-20">
+      <Container className="seetomorrow-container mt-5 max-w-full">
       <Row className="justify-content-center">
       <Col xs={12} md={8}>
 
