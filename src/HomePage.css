@@ -8,9 +8,8 @@
   .modern-title::after {
     content: '';
     display: block;
-    width: 75vmin;
+    width: 90vmin;
     height: 4px;
-    background: #006699;
     margin: 0 auto;
     margin-top: 8px;
     border-radius: 2px;

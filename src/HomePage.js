@@ -141,6 +141,8 @@ const HomePage = () => {
     <>
       <style>{styles}</style>
       <Container className="homepage-container mt-10 mx-auto max-w-full">
+      <Row className="justify-content-center">
+      <Col xs={12} md={8}>
         
       <div className="container mx-auto p-3">
         <div className="max-w-2xl mx-auto">
@@ -196,6 +198,8 @@ const HomePage = () => {
           </div>
           </div>
           </div>
+          </Col>
+          </Row>
           </Container>
           </>
   );
