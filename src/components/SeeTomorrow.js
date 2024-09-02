@@ -37,8 +37,8 @@ const TideCard = ({ type, height, time, isCurrentTide }) => (
       </div>
       <div className="flex items-center">
         {type === "H" ? 
-          <ArrowUp className="text-red-500" size={28} /> : 
-          <ArrowDown className="text-green-500" size={28} />
+          <ArrowUp className="text-red-500" size={38} /> : 
+          <ArrowDown className="text-green-500" size={38} />
         }
       </div>
     </div>
@@ -94,9 +94,11 @@ const SeeTomorrow = () => {
   return (
     <>
       <style>{styles}</style>
-      <Container className="homepage-container mt-10 p-5 mx-auto max-w-full"></Container>
 
-      <div className="container mx-auto mt-10 p-5">
+      <Container className="seetomorrow-container mx-auto max-w-full">
+
+      <div className="container mx-auto mt-20 p-3">
+
         <div className="max-w-2xl mx-auto">
           <div className="mb-4 text-center">
             <h1 className="modern-title text-3xl font-bold mb-2">Tomorrow's Tide Predictions</h1>
@@ -131,6 +133,7 @@ const SeeTomorrow = () => {
           </div>
         </div>
       </div>
+      </Container>
     </>
   );
 };
