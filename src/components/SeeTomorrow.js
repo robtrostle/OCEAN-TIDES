@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUp, ArrowDown } from 'lucide-react';
+import { Container, Row, Col, Card, Alert, Button } from "react-bootstrap";
+
 
 // Add this style block at the top of your file or in a separate CSS file
 const styles = `
@@ -26,7 +28,7 @@ const styles = `
 `;
 
 const TideCard = ({ type, height, time, isCurrentTide }) => (
-  <div className={`mb-3 p-4 navy-gradient rounded-lg shadow-md text-white ${isCurrentTide ? 'orange-border' : ''}`}>
+  <div className={`mb-3 p-4 navy-gradient rounded-lg shadow-md text-white }`}>
     <div className="flex justify-between items-center">
       <div>
         <h3 className="text-lg font-bold mb-2">{type === "H" ? "High Tide" : "Low Tide"}</h3>
@@ -92,10 +94,12 @@ const SeeTomorrow = () => {
   return (
     <>
       <style>{styles}</style>
-      <div className="container mx-auto mt-20 p-5">
+      <Container className="homepage-container mt-10 p-5 mx-auto max-w-full"></Container>
+
+      <div className="container mx-auto mt-10 p-5">
         <div className="max-w-2xl mx-auto">
           <div className="mb-4 text-center">
-            <h1 className="text-3xl font-bold mb-2">Tomorrow's Tide Predictions</h1>
+            <h1 className="modern-title text-3xl font-bold mb-2">Tomorrow's Tide Predictions</h1>
             <p className="date-display">{getTomorrow()}</p>
           </div>
           

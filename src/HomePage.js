@@ -27,8 +27,8 @@ const styles = `
   }
 `;
 
-const TideCard = ({ type, height, time, isCurrentTide }) => (
-  <div className={`mb-3 p-4 navy-gradient rounded-lg shadow-md text-white ${isCurrentTide ? 'orange-border' : ''}`}>
+const TideCard = ({ type, height, time, isNextTide }) => (
+  <div className={`mb-3 p-4 navy-gradient rounded-lg shadow-md text-white ${isNextTide ? 'orange-border' : ''}`}>
     <div className="flex justify-between items-center">
       <div>
         <h3 className="text-lg font-bold mb-2">{type === "H" ? "High Tide" : "Low Tide"}</h3>
@@ -48,7 +48,7 @@ const TideCard = ({ type, height, time, isCurrentTide }) => (
 const HomePage = () => {
   const [tides, setTides] = useState([]);
   const [error, setError] = useState(null);
-  const [currentTideIndex, setCurrentTideIndex] = useState(null);
+  const [nextTideIndex, setNextTideIndex] = useState(null);
   const [waterTemp, setWaterTemp] = useState(null);
   const navigate = useNavigate(); // Hook for navigation
   const [windData, setWindData] = useState({ speed: null, direction: null });
@@ -84,17 +84,16 @@ const HomePage = () => {
         const data = await response.json();
         setTides(data.predictions);
 
-        // Determine the index of the current tide
-        const currentTime = new Date().getHours() * 60 + new Date().getMinutes();
-        const closestTideIndex = data.predictions.findIndex((tide) => {
-          const tideTime = new Date(tide.t).getHours() * 60 + new Date(tide.t).getMinutes();
-          return Math.abs(tideTime - currentTime) < 120; // 2 hour window
+        // Determine the index of the next tide
+        const currentTime = new Date();
+        const nextTideIndex = data.predictions.findIndex((tide) => {
+          return new Date(tide.t) > currentTime;
         });
-        setCurrentTideIndex(closestTideIndex);
+        setNextTideIndex(nextTideIndex);
       } catch (error) {
         setError(error.message);
       }
-    };
+    }
 
     const fetchWaterTemp = async () => {
       try {
@@ -141,10 +140,12 @@ const HomePage = () => {
   return (
     <>
       <style>{styles}</style>
-      <div className="container mx-auto mt-80 p-5">
+      <Container className="homepage-container mt-80 p-5 mx-auto max-w-full"></Container>
+      
+      <div className="container mx-auto mt-10 p-5">
         <div className="max-w-2xl mx-auto">
           <div className="mb-4 text-center">
-            <h1 className="text-3xl font-bold mb-2">Tide Predictions for Atlantic Beach</h1>
+            <h1 className="modern-title text-3xl font-bold mb-2">Tide Predictions for Atlantic Beach</h1>
             <p className="date-display">{getToday()}</p>
           </div>
 
@@ -160,7 +161,7 @@ const HomePage = () => {
                 type={tide.type}
                 height={tide.v}
                 time={tide.t}
-                isCurrentTide={index === currentTideIndex}
+                isNextTide={index === nextTideIndex}
               />
             ))
           ) : (
