@@ -95,13 +95,13 @@ const SeeTomorrow = () => {
     <>
       <style>{styles}</style>
 
-      <Container className="seetomorrow-container mx-auto max-w-full">
+      <Container className="seetomorrow-container mt-20 mx-auto max-w-full">
 
-      <div className="container mx-auto mt-20 p-3">
+      <div className="container mx-auto p-3">
 
         <div className="max-w-2xl mx-auto">
           <div className="mb-4 text-center">
-            <h1 className="modern-title text-3xl font-bold mb-2">Tomorrow's Tide Predictions</h1>
+            <h1 className="modern-title text-3xl font-bold mb-2"></h1>
             <p className="date-display">{getTomorrow()}</p>
           </div>
           
