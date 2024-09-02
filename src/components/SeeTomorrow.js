@@ -95,17 +95,16 @@ const SeeTomorrow = () => {
     <>
       <style>{styles}</style>
 
-      <Container className="seetomorrow-container mt-5 max-w-full">
+      <Container className="seetomorrow-container mt-10 max-w-full">
       <Row className="justify-content-center">
       <Col xs={12} md={8}>
 
 
-      <div className="container mx-auto p-3">
-
+      <div className="container mx-auto p-4">
         <div className="max-w-2xl mx-auto">
-          <div className="mb-4 text-center">
+          <div className="mb-2 text-center">
             <h1 className="modern-title text-3xl font-bold mb-2"></h1>
-            <p className="date-display">{getTomorrow()}</p>
+            <p className="date-display mt-5">{getTomorrow()}</p>
           </div>
           
           {error ? (
