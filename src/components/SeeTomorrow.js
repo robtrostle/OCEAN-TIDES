@@ -95,7 +95,7 @@ const SeeTomorrow = () => {
     <>
       <style>{styles}</style>
 
-      <Container className="seetomorrow-container mt-20 mx-auto max-w-full">
+      <Container className="seetomorrow-container mt-20">
       <Row className="justify-content-center">
       <Col xs={12} md={8}>
 

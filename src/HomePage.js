@@ -140,7 +140,7 @@ const HomePage = () => {
   return (
     <>
       <style>{styles}</style>
-      <Container className="homepage-container mt-10 mx-auto max-w-full">
+      <Container className="homepage-container mt-10 max-w-full">
       <Row className="justify-content-center">
       <Col xs={12} md={8}>
         
