@@ -1,23 +1,14 @@
 
-.homepage-container {
+/* .homepage-container {
   width: 100%;
   height: 100vh;
   margin: 0;
   padding: 0;
-}
+} */
   
-  .modern-title {
-    font-family: 'Montserrat', sans-serif; /* Use a modern, clean font */
-    font-size: 2.5rem; /* Larger font size */
-    color: #f8f9fa; /* Navy blue color */
-    font-weight: 600; /* Semi-bold weight for emphasis */
-    text-transform: uppercase; /* Uppercase letters */
-    letter-spacing: 0.05em; /* Slightly increased letter spacing */
-    position: relative; /* Relative positioning for the underline effect */
-    display: inline-block; /* To fit the underline width */
-  }
 
-  .modern-title::after {
+
+  /* .modern-title::after {
     content: '';
     display: block;
     width: 60%;
@@ -26,74 +17,32 @@
     margin: 0 auto;
     margin-top: 8px;
     border-radius: 2px;
-  }
+  } */
 
 
 
   
-  .iframe-container iframe {
+  /* .iframe-container iframe {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vh;
     height: 100vh;
-  }
+  } */
   
   
-  .header-container {
+  /* .header-container {
     margin-bottom: 2rem;
+    width: 100%;
   }
   
   .header-container h1 {
     color: rgb(54, 50, 50);
     margin-bottom: 0.5rem;
-  }
+  } */
   
-  .date-display {
-    font-family: 'Montserrat', sans-serif; /* Use the same modern font as the title */
-    font-size: 1.5rem; /* Slightly larger font size for emphasis */
-    color: #FFFFFF; /* White color for contrast against the gradient background */
-    font-weight: 500; /* Medium weight for a sleek look */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    padding: 5px 10px; /* Add padding for a 'badge' effect */
-    border-radius: 8px; /* Rounded corners for a modern look */
-    display: inline-block; /* Center the date display */
-    margin-top: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
-  }
-  
-  .tide-card {
-    background: linear-gradient(135deg, #003366, #006699); /* Navy blue gradient */
-    opacity: 0.9;
-    color: #fff; /* White text color */
-  }
-  
-  .tide-card .card-body {
-    padding: 20px;
-  }
-  
-  .tide-card .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff; /* Ensure title text is white */
-  }
-  
-  .tide-card .card-text {
-    font-size: 1.2rem;
-    color: #fff; /* Ensure card text is white */
-  }
 
-  .homepage-container .text-center .see-tomorrow-btn {
-    font-size: 1.2rem;
-    color: #ffffff; /* White text color for better contrast */
-    font-weight: bold;
-    background: linear-gradient(135deg, #6badda, rgba(0, 51, 102, 0.8)); /* Gradient background */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px; /* Slightly rounded corners */
-    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition for background and transform */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
-  }
+  
   
   .homepage-container .text-center .see-tomorrow-btn:hover {
     background: linear-gradient(135deg, #92c9f3,  rgba(1, 11, 22, 0.8)); /* Darker gradient on hover */
