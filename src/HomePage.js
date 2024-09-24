@@ -151,6 +151,7 @@ const HomePage = () => {
       <div className="container mx-auto p-3">
         <div className="max-w-2xl mx-auto">
           <div className="header-container mb-4 text-center">
+
           <h1 className="modern-title max-w-full text-3xl font-bold mb-2" style={{ 
   color: 'white',
   textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
