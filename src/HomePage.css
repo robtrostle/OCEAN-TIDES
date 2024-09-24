@@ -5,6 +5,11 @@
   padding: 3rem;
 }
   
+
+.modern-title{
+font-size: 2.4rem;
+}
+
   .modern-title::after {
     content: '';
     display: block;
@@ -28,7 +33,7 @@
 
 
   .homepage-container .text-center .see-tomorrow-btn:hover {
-    background: linear-gradient(135deg, #92c9f3,  rgba(1, 11, 22, 0.8)); /* Darker gradient on hover */
+    background: linear-gradient(135deg, #99b6cc,  rgba(1, 11, 22, 0.8)); /* Darker gradient on hover */
     transform: translateY(-2px); /* Slight lift effect on hover */
   }
 
@@ -74,4 +79,6 @@
 .wind-card .card-title, 
 .wind-card .card-text {
   font-size: 1.25rem;
+
 }
+

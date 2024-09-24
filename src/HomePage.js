@@ -137,6 +137,10 @@ const HomePage = () => {
     navigate("/see-tomorrow");
   };
 
+  const navigateToDutton = () => {
+    navigate("/dutton-island");
+  };
+
   return (
     <>
       <style>{styles}</style>
@@ -147,8 +151,12 @@ const HomePage = () => {
       <div className="container mx-auto p-3">
         <div className="max-w-2xl mx-auto">
           <div className="header-container mb-4 text-center">
-            <h1 className="modern-title max-w-full text-3xl font-bold mb-2">Atlantic Beach, FL</h1>
-            <p className="date-display">{getToday()}</p>
+
+          <h1 className="modern-title max-w-full text-3xl font-bold mb-2" style={{ 
+  color: 'white',
+  textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+}}>Atlantic Beach, FL</h1>
+          <p className="date-display">{getToday()}</p>
           </div>
 
           
@@ -191,8 +199,19 @@ const HomePage = () => {
           )}
           <div className="text-center mt-4">
             <Col xs="auto">
-              <Button className="see-tomorrow-btn mb-5" onClick={navigateToTomorrow}>
-                See Tomorrow's Tides
+              <Button 
+                className="see-tomorrow-btn mb-3 btn-tomorrow px-6 py-2 text-lg font-bold text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 shadow-md rounded-md" 
+                onClick={navigateToTomorrow}
+              >
+                Tomorrow's Tides
+              </Button>
+            </Col>
+            <Col xs="auto">
+              <Button 
+                className="see-tomorrow-btn mb-5 btn-dutton px-6 py-2 text-lg font-bold text-white bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 shadow-md rounded-md" 
+                onClick={navigateToDutton}
+              >
+                Dutton Island
               </Button>
             </Col>
           </div>
