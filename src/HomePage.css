@@ -82,3 +82,9 @@ font-size: 2.4rem;
 
 }
 
+.air-temp-card {
+  background: linear-gradient(to right, #FFA07A, #FFD700); /* Light Orange Gradient */
+  color: black;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
