@@ -52,6 +52,7 @@ const HomePage = () => {
   const [waterTemp, setWaterTemp] = useState(null);
   const navigate = useNavigate(); // Hook for navigation
   const [windData, setWindData] = useState({ speed: null, direction: null });
+  const [airTemperature, setAirTemperature] = useState(null)
 
   // Get today's date in the format YYYYMMDD
   const getFormattedDate = () => {
@@ -126,10 +127,29 @@ const HomePage = () => {
       } catch (error) {
         setError(error.message);
       }
+
     };
+
+      const fetchAirTemperature = async () => {
+        try {
+          const response = await fetch(
+            'https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&station=8720218&product=air_temperature&time_zone=lst_ldt&units=english&application=DataAPI_Sample&format=json'
+          );
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          const airTemperature = parseFloat(data.data[0].v); // Extract air temperature
+          setAirTemperature(airTemperature);
+        } catch (error) {
+          setError(error.message);
+        }
+
+      };
 
     fetchTides();
     fetchWaterTemp();
+    fetchAirTemperature();
     fetchWindData();
   }, []);
 
@@ -187,6 +207,14 @@ const HomePage = () => {
               </Card.Body>
             </Card>
           )}
+          {airTemperature !== null && (
+              <Card className="mt-4 air-temp-card">
+                <Card.Body className="text-center">
+                  <Card.Title>Current Air Temperature</Card.Title>
+                  <Card.Text>{airTemperature.toFixed(1)}°F</Card.Text>
+                </Card.Body>
+              </Card>
+            )}
           {windData.speed !== null && windData.direction !== null && (
             <Card className="mt-4 wind-card">
               <Card.Body className="text-center">
